@@ -1,0 +1,4 @@
+openai
+gitpython
+requests
+python-dotenv
