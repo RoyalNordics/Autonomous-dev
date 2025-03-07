@@ -27,7 +27,7 @@ print(f'✅ Fil oprettet: {file_path}')
 
 # Opsæt GitHub adgangstoken
 github_token = os.getenv('GITHUB_ACCESS_TOKEN')
-repo_url = f'https://{github_token}@github.com/DitBrugernavn/Autonomous-dev.git'
+repo_url = f'https://{github_token}@github.com/RoyalNordics/Autonomous-dev.git'
 
 repo = git.Repo('.')
 
