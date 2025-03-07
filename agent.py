@@ -25,9 +25,22 @@ with open(file_path, 'w') as f:
 
 print(f'✅ Fil oprettet: {file_path}')
 
-# Commit og push til GitHub
+# Opsæt GitHub adgangstoken
+github_token = os.getenv('GITHUB_ACCESS_TOKEN')
+repo_url = f'https://{github_token}@github.com/DitBrugernavn/Autonomous-dev.git'
+
 repo = git.Repo('.')
+
+# Tjek om 'origin' findes, ellers tilføj den
+if 'origin' not in [r.name for r in repo.remotes]:
+    origin = repo.create_remote('origin', repo_url)
+else:
+    origin = repo.remote('origin')
+    origin.set_url(repo_url)
+
+# Push ændringer
 repo.git.add(A=True)
 repo.index.commit('Auto-genereret React komponent: LoginForm')
-repo.remote().push()
+origin.push()
+
 print('🚀 Kode pushet til GitHub!')
